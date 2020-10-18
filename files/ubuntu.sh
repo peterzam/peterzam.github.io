@@ -7,17 +7,21 @@ fi
 cd /tmp && \
 apt update && \
 apt upgrade -y && \
-apt --fix-missing install -y
 
 wget http://releases.obins.net/occ/linux/deb/ObinsKit_1.1.4_x64.deb && \
 dpkg -i ObinsKit_1.1.4_x64.deb && \
 rm  -rf ObinsKit_1.1.4_x64.deb
+apt --fix-missing install -y
 
 echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list && \
 wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - && \
 rm -rf linux_signing_key.pub && \
 apt update && \
 apt install google-chrome-stable -y
+
+apt install git -y 
+
+apt install zsh -y
 
 wget -O get-docker.sh https://get.docker.com && \
 bash get-docker.sh && \
@@ -46,3 +50,5 @@ add-apt-repository multiverse && \
 apt-get update && \
 apt install virtualbox -y && \
 apt install virtualbox-ext-pack -y
+
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
