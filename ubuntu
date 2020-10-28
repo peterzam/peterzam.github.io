@@ -4,51 +4,65 @@ if ! [ $(id -u) = 0 ]; then
    exit 1
 fi
 
+#Move working directory to /tmp for temporary files and, Update and Upgrade
 cd /tmp && \
 apt update && \
 apt upgrade -y && \
 
+#Install ibus keyboard and Pyidaungsu Keyboard Layout
+wget https://sourceforge.net/projects/ubuntumm/files/ibus-keymagic/DEBIAN_Ubuntu_Mint_Pinguy_Kali_Deb/ibus-keymagic_1.5.2_amd64.deb
+dpkg -i ibus-keymagic_1.5.2_amd64.deb
+wget ttps://github.com/thantthet/keymagic-keyboards/raw/master/Pyidaungsu/Pyidaungsu%20MM.km2
+mkdir $HOME/.keymagic
+cp Pyidaungsu\ MM.km2 mkdir $HOME/.keymagic/.keymagic
+gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us'), ('ibus', '/home/$USER/.keymagic/Pyidaungsu MM.km2')]"
+
+#Install Obinskit for AnnePro2 Keyboard
 wget http://releases.obins.net/occ/linux/deb/ObinsKit_1.1.4_x64.deb && \
 dpkg -i ObinsKit_1.1.4_x64.deb && \
 rm  -rf ObinsKit_1.1.4_x64.deb
 apt --fix-missing install -y
 
+#Install Chrome
 echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list && \
 wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - && \
 rm -rf linux_signing_key.pub && \
 apt update && \
 apt install google-chrome-stable -y
 
-apt install git -y 
+#install Git, Z-shell and Gnome-tweaks
+apt install git zsh gnome-tweaks -y 
 
-apt install zsh -y
-
+#Install Docker
 wget -O get-docker.sh https://get.docker.com && \
 bash get-docker.sh && \
 rm -rf get-docker.sh && \
 usermod -aG docker $USER
 
+#Install VS-Code
 snap install --classic code
 
+#Install Conky and Configure
 apt install -y conky && \
 wget https://gist.githubusercontent.com/peterzam/16c3e5704b9373d71cda622fb2f2a709/raw/9943da641c175ced93f18bcaa4fdce26be764338/conky.conf && \
 cp conky.conf /etc/conky/conky.conf && \
-mv conky.conf /home/$USER/.conkyrc && \
+mv conky.conf $HOME/.conkyrc && \
 rm -rf conky.conf && \
-mkdir -p /home/$USER/.config/autostart && \
+mkdir -p $HOME/.config/autostart && \
 wget https://gist.githubusercontent.com/peterzam/04ad1044106ca3b12deee023c6abffca/raw/2a3adea5dcdd695ba5763b783aae8b24c54729e0/conky.desktop && \
-mv conky.desktop /home/$USER/.config/autostart/conky.desktop && \
+mv conky.desktop $HOME/.config/autostart/conky.desktop && \
 rm -rf conky.desktop
 
-apt install gnome-tweaks
-
-cd /home/$USER && \
+#Install Golang
+cd $HOME && \
 apt install golang && \
 cd /tmp
 
+#Install VirtualBox and Extension Packs
 add-apt-repository multiverse && \
 apt-get update && \
 apt install virtualbox -y && \
 apt install virtualbox-ext-pack -y
 
+#Install Ohmyzsh for configure terminal default ot zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
