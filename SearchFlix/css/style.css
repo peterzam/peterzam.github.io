@@ -1,7 +1,6 @@
 html,
 body,
 div,
-span,
 applet,
 object,
 iframe,
@@ -330,7 +329,6 @@ p {
 
 .header {
   font-size: 24px;
-  border-bottom: 1px solid #eee;
   position: relative;
   text-align: left;
 }
@@ -344,9 +342,12 @@ p {
   font-weight: 900;
   position: relative;
 }
-.flix {
-  color: #c0392b;
+@media only screen and (max-width: 380px) {
+  .title {
+    display: none;
+  }
 }
+
 .subTitle {
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
