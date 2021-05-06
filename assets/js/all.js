@@ -65,6 +65,7 @@ function waitForMs(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+
 var pxlCount = 0;
 $(window).scroll(function () {
   scrollVal = $(document).scrollTop();
@@ -77,6 +78,7 @@ $(window).scroll(function () {
     "-moz-filter": "blur(" + pxlCount + "px)",
     filter: "blur(" + pxlCount + "px)",
   });
+  
 });
 
 // test zone

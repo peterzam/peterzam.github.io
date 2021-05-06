@@ -163,7 +163,6 @@ body {
 #article-left {
   height: 100%;
   width: 50%;
-  text-align: center;
   float: left;
   border-right: 1px solid #e83951;
 }
@@ -171,21 +170,30 @@ body {
 #article-right {
   height: 100%;
   width: 50%;
-  text-align: center;
   float: right;
   border-left: 1px solid #e83951;
   margin-left: -1px;
 }
 
-#content-title {
-  padding-top: 30%;
-  /* margin-bottom: 5%; */
-  font-size: 50px;
-  font-family: "Open Sans", sans-serif;
+#content-box {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+
 }
 
-#content {
+#content-title {
   font-size: 50px;
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+
+}
+
+#content-social {
+  font-size: 50px;
+  text-align: center;
   color: #eeeeee;
   padding-top: 5%;
 }
@@ -195,25 +203,29 @@ body {
   color:#eeeeee;
 }
 
-#content a:hover {
-  text-decoration: none;
-}
 
-#content .mail:hover {
+#content-social .mail:hover {
   color: #2dba4e;
 }
-#content .telegram:hover {
+#content-social .telegram:hover {
   color: #0088cc;
 }
-#content .facebook:hover {
+#content-social .facebook:hover {
   color: #1877f2; /**#3b5998**/
 }
-#content .twitter:hover {
+#content-social .twitter:hover {
   color: #1da1f2;
 }
-#content .medium:hover {
+#content-social .dev:hover {
   color: #ffc017;
 }
-#content .github:hover {
+#content-social .github:hover {
   color: #2b3137;
+}
+
+#content-support {
+  font-size: 50px;
+  text-align: center;
+  color: #eeeeee;
+  padding-top: 5%;
 }
