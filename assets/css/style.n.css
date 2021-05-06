@@ -17,7 +17,6 @@ html,
 body {
   background: #000010;
   overflow-x: hidden;
-
 }
 
 #background {
@@ -44,7 +43,6 @@ body {
 
 #line {
   width: 50%;
-  background-color: #e83951;
   border-color: #e83951;
 }
 
@@ -140,29 +138,82 @@ body {
   animation: bounce 2s infinite;
 }
 
-#wrapper {
-  height: 100%;
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  color: #ffffff;
-  opacity: 0%;
-}
-
-/**Test Zone**/
-
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
   border-radius: 4px;
-  background-color: #393e46;
-  /*-webkit-box-shadow: inset 0 0 6px rgba(200,200,200,1);*/
+  background-color: rgba(255, 255, 255, 0);
 }
 
 ::-webkit-scrollbar-thumb {
   border-radius: 4px;
   background-color: #eeeeee;
-  /*-webkit-box-shadow: inset 0 0 6px rgba(90,90,90,0.7); */
+}
+
+#article {
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  opacity: 0%;
+}
+
+#article-left {
+  height: 100%;
+  width: 50%;
+  text-align: center;
+  float: left;
+  border-right: 1px solid #e83951;
+}
+
+#article-right {
+  height: 100%;
+  width: 50%;
+  text-align: center;
+  float: right;
+  border-left: 1px solid #e83951;
+  margin-left: -1px;
+}
+
+#content-title {
+  padding-top: 30%;
+  /* margin-bottom: 5%; */
+  font-size: 50px;
+  font-family: "Open Sans", sans-serif;
+}
+
+#content {
+  font-size: 50px;
+  color: #eeeeee;
+  padding-top: 5%;
+}
+
+.icon {
+  padding-right: 5px;
+  color:#eeeeee;
+}
+
+#content a:hover {
+  text-decoration: none;
+}
+
+#content .mail:hover {
+  color: #2dba4e;
+}
+#content .telegram:hover {
+  color: #0088cc;
+}
+#content .facebook:hover {
+  color: #1877f2; /**#3b5998**/
+}
+#content .twitter:hover {
+  color: #1da1f2;
+}
+#content .medium:hover {
+  color: #ffc017;
+}
+#content .github:hover {
+  color: #2b3137;
 }

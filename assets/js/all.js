@@ -65,13 +65,11 @@ function waitForMs(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-//test zone
 var pxlCount = 0;
 $(window).scroll(function () {
   scrollVal = $(document).scrollTop();
-  console.log(scrollVal);
   $("#face").css("opacity", 1 - scrollVal / 200);
-  $("#wrapper").css("opacity", scrollVal / 200);
+  $("#article").css("opacity", scrollVal / 200);
   pxlCount = scrollVal < 200 ? scrollVal / 100 : 2;
   $("p.pxlCount > span").text(pxlCount);
   $("#background").css({
@@ -80,3 +78,5 @@ $(window).scroll(function () {
     filter: "blur(" + pxlCount + "px)",
   });
 });
+
+// test zone
