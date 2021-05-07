@@ -6,8 +6,8 @@ document.addEventListener(
       density: 8000,
       parallaxMultiplier: 20,
       lineWidth: 1.5,
-      dotColor: "rgb(232, 57, 81,0.8)",
-      lineColor: "rgb(168, 218, 220,0.8)",
+      dotColor: "#e83951",
+      lineColor: "#a8dadc",
     });
   },
   false
@@ -65,7 +65,6 @@ function waitForMs(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-
 var pxlCount = 0;
 $(window).scroll(function () {
   scrollVal = $(document).scrollTop();
@@ -78,7 +77,13 @@ $(window).scroll(function () {
     "-moz-filter": "blur(" + pxlCount + "px)",
     filter: "blur(" + pxlCount + "px)",
   });
-  
 });
 
-// test zone
+function copyToClipboard(elementId) {
+  var aux = document.createElement("input");
+  aux.setAttribute("value", document.getElementById(elementId).innerHTML);
+  document.body.appendChild(aux);
+  aux.select();
+  document.execCommand("copy");
+  document.body.removeChild(aux);
+}
