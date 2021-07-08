@@ -4,26 +4,26 @@
   <head>
     <title>Peter Zam 🤟 Simple Server Watcher</title>
   </head>
+  <script type="text/javascript">
+    var long = document.getElementById("ip");
+    var lat = document.getElementById("stat");
+    var lat = document.getElementById("traffic");
+    var exampleSocket = new WebSocket("ws://vmi608746.contaboserver.net:2000/ws");
+    var update = function () {
+      exampleSocket.onmessage = function (event) {
+        var Arr = event.data.split("|");
+        ip.textContent = Arr[0].toString();
+        stat.textContent = Arr[1].toString();
+        traffic.textContent = Arr[2].toString();
+      };
+    };
+    window.setTimeout(update);
+  </script>
   <body>
     <h2>Simple Server:</h2>
     <div id="ip"></div>
     <div id="stat"></div>
     <div id="traffic"></div>
     <h3><a href="https://github.com/peterzam/SimpleServer">About</a></h3>
-    <script type="text/javascript">
-      var long = document.getElementById("ip");
-      var lat = document.getElementById("stat");
-      var lat = document.getElementById("traffic");
-      var exampleSocket = new WebSocket("ws://vmi608746.contaboserver.net:2000/ws");
-      var update = function () {
-        exampleSocket.onmessage = function (event) {
-          var Arr = event.data.split("|");
-          ip.textContent = Arr[0].toString();
-          stat.textContent = Arr[1].toString();
-          traffic.textContent = Arr[2].toString();
-        };
-      };
-      window.setTimeout(update);
-    </script>
   </body>
 </html>
